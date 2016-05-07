@@ -1,8 +1,7 @@
 package dhbk.android.fragmenttest;
 
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 // TODO: 5/7/16
 public class MainActivity extends AppCompatActivity implements Fragment2.Frag2Interface{
@@ -25,10 +24,16 @@ public class MainActivity extends AppCompatActivity implements Fragment2.Frag2In
 
     @Override
     public void changeTV() {
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.text_fragment);
-        if (fragment instanceof Fragment1) {
-            Fragment1 fragment1 = (Fragment1)fragment;
-            fragment1.changeTVFrag1();
-        }
+//        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.text_fragment);
+//        if (fragment instanceof Fragment1) {
+//            Fragment1 fragment1 = (Fragment1)fragment;
+//            fragment1.changeTVFrag1();
+//        }
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.text_fragment, Fragment1.newInstance("Hiếu ............"))
+                .addToBackStack(null)
+                .commit();
     }
 }
